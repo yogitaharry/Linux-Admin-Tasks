@@ -66,6 +66,26 @@ solution 1 : There are 2 ways :
 
 2> Mount Mode:
 
-mkdir 
+#mkdir /media/smbsharewin2k
+
+#smbclient  -L mypcwin2k  -U  admin
+  pwd
+  
+ #smbmount //mypcwin2k/install  /media/smbsharewin2k   -o  username=admin
+  pwd>
+  
+ # ls  /media/smbsharewin2k
+ cd /media/smbsharewin2k
+ vi  mydat.txt
+ 
+ #unix2dos mydata.txt
+ 
+ #umount  /media/smbsharewin2k
+    device busy
+ #cd ..
+ #umount  /media/smbsharewin2k/
+ 
+ =======================================================================================================================
+ 
 
        
