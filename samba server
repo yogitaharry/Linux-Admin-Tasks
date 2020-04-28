@@ -1,0 +1,71 @@
+SAMBA server: session message block
+              used to share resources-file/dir across the n/w with multiple PCs irrespective os destro...
+              n/w oreinted protocol
+              -------------------------------------------------------------------------------------------------------------
+              eg. 1PC-win2k and 3 PC-linux , file on windows/linux to be access from linux/win2k machines possible by samba.
+              
+       NOTE::       If same OS destro in n/w and wanna access other machine share then we use NFS share , 
+                    For cross os destro in n/w and wanna access other machine share then we use SAMBA.
+               -------------------------------------------------------------------------------------------------------------  
+      
+scenerio 1 :  How to access win2k share by linux machine ??
+solution 1 : There are 2 ways :
+                         1. FTP mode
+                         2. mount mode
+                         
+-------------------------------------------------------------------------------------------------------
+ win2k:  Control Panel\All Control Panel Items\Network and Sharing Center\Advanced sharing settings\
+        >> Turn on file sharing
+=================================================        
+        
+ linux:
+      #rpm -qa | grep -i samba
+      #yum install samba -y
+      #rpm -qa | grep samba
+           samba-client-3.1.10xxxx                   imp for client
+           samba-common-3.1.1-xxxx                   imp for client
+           samba-3.1.10.xxxx
+           samba-config-samba-3.1.10xxx
+           samba-swat-3.1.10xxxx
+      
+     #smbclient -L win2k_MachineName  -U  admin
+        pwd: (enter admin a/c user pwd
+       
+      
+    YOU WILL SEE WIN2K machine file/folder , we can use only DISK type with no $ share only 
+      SHARENAME      TYPE        COMMENT      
+      IPC$           IPC         remote pc
+      install        Disk      
+      ADMIN$         Disk        Remote Admin
+       C$             Disk        Remote Admin
+  
+  
+  
+  -------------------------------------------------------------------------------------------------------
+   1> FTP mode: we can use these folders like  FTP commands
+   
+   #smbclient  //win2k_os_name/install   -U  admin
+   pwd>
+   smb> ls                                           list win2k file/folders 
+   smb> ?  to list all smb commands
+   
+      > get filename1.txt                            download to curr dir on linux from win2k
+      
+      >!ls                                           check local/linux dir files
+   
+      > put  filename2.txt                          upload to win2k from linux
+      
+      >ls                                          list win2k file/folers
+      
+      >mget  *.exe                                get(download) multiple files
+
+
+
+
+
+
+2> Mount Mode:
+
+mkdir 
+
+       
